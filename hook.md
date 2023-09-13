@@ -11,7 +11,7 @@
 - Créer un fichier nommé `pre-commit` dans le dossier `.git/hooks`
 - Ajouter le code suivant dans le fichier :
 ```bash
-
+#!/bin/sh
 # Spécifiez l'emplacement de votre exécutable `mysqldump`
 # Si vous avez installé XAMPP à l'emplacement par défaut, cela pourrait ressembler à ceci:
 MYSQLDUMP="C:/xampp/mysql/bin/mysqldump.exe"
@@ -33,7 +33,6 @@ exit 0
 - Créer un fichier nommé `post-merge` dans le dossier `.git/hooks`
 - Ajouter le code suivant dans le fichier :
 ```bash
-#!/bin/sh
 #!/bin/sh
 
 # Spécifiez l'emplacement de votre exécutable `mysql` et de `mysqldump`
