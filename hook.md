@@ -26,7 +26,7 @@ DUMP_FILE="path/vers/votre/dossier/sql/$DB_NAME.sql"
 
 # Ajoutez le dump à la liste des fichiers à commettre
 git add $DUMP_FILE
-
+ 
 exit 0
 ```
 ## Créer un hook de restauration de la base de données
