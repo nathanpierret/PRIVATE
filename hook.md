@@ -15,7 +15,7 @@
 # Spécifiez l'emplacement de votre exécutable `mysqldump`
 # Si vous avez installé XAMPP à l'emplacement par défaut, cela pourrait ressembler à ceci:
 MYSQLDUMP="C:/xampp/mysql/bin/mysqldump.exe"
-
+ 
 # Remplacez par les détails de votre base de données
 DB_NAME="nom_de_votre_base"
 DB_USER="nom_utilisateur"
