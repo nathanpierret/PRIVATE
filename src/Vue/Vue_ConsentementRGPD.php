@@ -13,7 +13,8 @@ class Vue_ConsentementRGPD extends Vue_Composant
 
     function donneTexte(): string
     {
-        $str= "<H1>Objet du traitement (finalité et base légale)</H1>
+        $str= "<h1>Objet du traitement (finalité et base légale)</h1>
+<p style='max-width: 90%; margin: 0 auto 20px;'>
 La société ABCD, dont le siège est situé à CONFIANCE (96 000), Rue la Transparence, dispose d’un site internet de vente en ligne. Ce site permet de recevoir les commandes de nos clients et les données collectées à cette occasion sont enregistrées et traitées dans un fichier clients.
 
 Ce fichier permet de :
@@ -69,7 +70,7 @@ Rue la Transparence
 (NB : si vous n’avez pas de DPO, indiquez des coordonnées précises où exercer ces droits dans l’entreprise).
 
 Si vous estimez, après avoir contacté la société ABCD, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation en ligne à la CNIL.
-
+</p>
 ";
         //je crois avoir oublié la fin de la page...
         return $str;

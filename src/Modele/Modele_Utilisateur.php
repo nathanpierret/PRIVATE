@@ -192,4 +192,32 @@ SET motDePasse = :parammotDePasse ');
         return $reponse;
     }
 
+    static function Utilisateur_AccepterRGPD($idUtilisateur)
+
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+SET aAccepteRGPD = true, dateAcceptationRGPD = :dateRGPD
+WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramidUtilisateur',$idUtilisateur);
+        $date = (new \DateTime())->format("Y-m-d");
+        $requetePreparee->bindParam('dateRGPD',$date);
+        $reponse = $requetePreparee->execute();
+        return $reponse;
+    }
+
+    static function Utilisateur_DroitOpposition($idUtilisateur)
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+SET droitOpposition = true 
+WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramidUtilisateur',$idUtilisateur);
+        $reponse = $requetePreparee->execute();
+        return $reponse;
+    }
 }
