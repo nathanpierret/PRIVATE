@@ -45,12 +45,18 @@ switch ($action) {
                         //error_log("idCategorie_utilisateur : " . $_SESSION["idCategorie_utilisateur"]);
                         switch ($utilisateur["idCategorie_utilisateur"]) {
                             case 1:
-                                $_SESSION["typeConnexionBack"] = "administrateurLogiciel"; //Champ inutile, mais bien pour voir ce qu'il se passe avec des étudiants !
-                                $Vue->setMenu(new Vue_Menu_Administration());
+                                $_SESSION["typeConnexionBack"] = "administrateurLogiciel";//Champ inutile, mais bien pour voir ce qu'il se passe avec des étudiants !
+                                $typeConnexion = "administrateurLogiciel";
+                                $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
                                 break;
                             case 2:
-                                $_SESSION["typeConnexionBack"] = "utilisateurCafe";
-                                $Vue->setMenu(new Vue_Menu_Administration());
+                                if ($utilisateur["aAccepteRGPD"]) {
+                                    $_SESSION["typeConnexionBack"] = "utilisateurCafe";
+                                    $typeConnexion = "utilisateurCafe";
+                                    $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
+                                } else {
+                                    include "./Controleur/Controleur_AccepterRGPD.php";
+                                }
                                 break;
                             case 3:
                                 $_SESSION["typeConnexionBack"] = "entrepriseCliente";
@@ -59,10 +65,14 @@ switch ($action) {
                                 include "./Controleur/Controleur_Gerer_Entreprise.php";
                                 break;
                             case 4:
-                                $_SESSION["typeConnexionBack"] = "salarieEntrepriseCliente";
-                                $_SESSION["idSalarie"] = $utilisateur["idUtilisateur"];
-                                $_SESSION["idEntreprise"] = Modele_Salarie::Salarie_Select_byId($_SESSION["idUtilisateur"])["idEntreprise"];
-                                include "./Controleur/Controleur_Catalogue_client.php";
+                                if ($utilisateur["aAccepteRGPD"]) {
+                                    $_SESSION["typeConnexionBack"] = "salarieEntrepriseCliente";
+                                    $_SESSION["idSalarie"] = $utilisateur["idUtilisateur"];
+                                    $_SESSION["idEntreprise"] = Modele_Salarie::Salarie_Select_byId($_SESSION["idUtilisateur"])["idEntreprise"];
+                                    include "./Controleur/Controleur_Catalogue_client.php";
+                                } else {
+                                    include "./Controleur/Controleur_AccepterRGPD.php";
+                                }
                                 break;
                         }
 

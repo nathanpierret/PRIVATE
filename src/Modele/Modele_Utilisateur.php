@@ -192,4 +192,17 @@ SET motDePasse = :parammotDePasse ');
         return $reponse;
     }
 
+    static function Utilisateur_AccepterRGPD($idUtilisateur)
+
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+SET aAccepteRGPD = true 
+WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramidUtilisateur',$idUtilisateur);
+        $reponse = $requetePreparee->execute();
+        return $reponse;
+    }
 }
