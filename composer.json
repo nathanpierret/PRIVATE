@@ -13,7 +13,8 @@
     "spipu/html2pdf": "^5.2",
     "ext-sodium": "*",
     "ext-curl": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "phpunit/phpunit": "10.4.1"
   },
   "autoload": {
     "files": [
@@ -23,5 +24,10 @@
       "App\\": "src"
     }
 
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
   }
 }

@@ -24,12 +24,27 @@ switch ($action) {
         {
             //on vérifie si le mot de passe de la BDD est le même que celui rentré
             if ($_REQUEST["NouveauPassword"] == $_REQUEST["ConfirmPassword"]) {
-                $Vue->setEntete(new Vue_Structure_Entete());
-                $Vue->setMenu(new Vue_Menu_Administration());
-                Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_SESSION["idUtilisateur"], $_REQUEST["NouveauPassword"]);
-                $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<label><b>Votre mot de passe a bien été modifié</b></label>"));
-                // Dans ce cas les mots de passe sont bons, il est donc modifier
-
+                if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) >= 90) {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $Vue->setMenu(new Vue_Menu_Administration());
+                    Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_SESSION["idUtilisateur"], $_REQUEST["NouveauPassword"]);
+                    $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<label><b>Votre mot de passe a bien été modifié</b></label>"));
+                    // Dans ce cas les mots de passe sont bons, il est donc modifier
+                } else {
+                    if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 64 ) {
+                        $Vue->setEntete(new Vue_Structure_Entete());
+                        $Vue->setMenu(new Vue_Menu_Administration());
+                        $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est très faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                    } elseif (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 80) {
+                        $Vue->setEntete(new Vue_Structure_Entete());
+                        $Vue->setMenu(new Vue_Menu_Administration());
+                        $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                    } else {
+                        $Vue->setEntete(new Vue_Structure_Entete());
+                        $Vue->setMenu(new Vue_Menu_Administration());
+                        $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est de force moyenne. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                    }
+                }
             } else {
                 $Vue->setEntete(new Vue_Structure_Entete());
                 $Vue->setMenu(new Vue_Menu_Administration());
