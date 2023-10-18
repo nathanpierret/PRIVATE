@@ -14,7 +14,9 @@
     "ext-sodium": "*",
     "ext-curl": "*",
     "ext-pdo": "*",
-    "phpunit/phpunit": "10.4.1"
+    "phpunit/phpunit": "10.4.1",
+    "phpmailer/phpmailer": "^6.8",
+    "ext-openssl": "*"
   },
   "autoload": {
     "files": [
