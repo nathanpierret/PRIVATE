@@ -39,8 +39,10 @@ switch ($action) {
     case "réinitialiserMDPUtilisateur":
         //Réinitialiser MDP sur la fiche de l'entreprise
         $Utilisateur = Modele_Utilisateur::Utilisateur_Select_ParId($_REQUEST["idUtilisateur"]);
-        Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_REQUEST["idUtilisateur"], "secret"); //$Utilisateur["idUtilisateur"]
-
+        $mdp = \App\Fonctions\GenereMDP(15);
+        App\Fonctions\envoiMailOubliMDP($Utilisateur["login"],$mdp);
+        Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($Utilisateur["idUtilisateur"],1);
+        Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($_REQUEST["idUtilisateur"], $mdp); //$Utilisateur["idUtilisateur"]
         $listeUtilisateur = Modele_Utilisateur:: Utilisateur_Select_Cafe();
         $Vue->addToCorps(new Vue_Utilisateur_Liste($listeUtilisateur));
 

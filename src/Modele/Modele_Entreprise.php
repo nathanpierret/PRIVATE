@@ -107,17 +107,18 @@ WHERE idEntreprise = :paramidEntreprise');
      * @param $motDePasseClair
      * @return mixed
      */
-    static function Entreprise_Modifier_motDePasse($idEntreprise, $motDePasse )
+    static function Entreprise_Modifier_motDePasse($idEntreprise, $motDePasse)
 
     {
+        $idUtilisateur = Modele_Entreprise::Entreprise_Select_ParId($idEntreprise)["idUtilisateur"];
         $connexionPDO = Singleton_ConnexionPDO::getInstance();
 
         $requetePreparee = $connexionPDO->prepare(
-            'UPDATE `entreprise` 
+            'UPDATE `utilisateur` 
 SET motDePasse = :parammotDePasse 
-WHERE idEntreprise = :paramidEntreprise');
+WHERE idUtilisateur = :paramidUtilisateur');
         $requetePreparee->bindParam('parammotDePasse', $motDePasse);
-        $requetePreparee->bindParam('paramidEntreprise', $idEntreprise);
+        $requetePreparee->bindParam('paramidUtilisateur', $idUtilisateur);
         $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
         return $reponse;
     }

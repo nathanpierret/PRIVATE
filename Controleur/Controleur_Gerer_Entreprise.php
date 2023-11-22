@@ -13,7 +13,6 @@ use App\Vue\Vue_Salarie_Liste;
 use App\Vue\Vue_Structure_BasDePage;
 use App\Vue\Vue_Structure_Entete;
 
-
 switch ($action) {
     case "infoEntreprise" :
         $Vue->setEntete(new Vue_Structure_Entete());
@@ -87,11 +86,14 @@ switch ($action) {
         $Vue->setMenu(new Vue_Menu_Entreprise_Client());
         //il faut récuperer le mdp en BDD et vérifier qu'ils sont identiques
         $entreprise_connectee = Modele_Entreprise::Entreprise_Select_ParId($_SESSION["idEntreprise"]);
-        if (password_verify($_REQUEST["AncienPassword"], $entreprise_connectee["motDePasse"])) {
+        $utilisateur_entreprise = \App\Modele\Modele_Utilisateur::Utilisateur_Select_ParId($entreprise_connectee["idUtilisateur"]);
+        if ($_REQUEST["AncienPassword"] == $utilisateur_entreprise["motDePasse"]) {
             //on vérifie si le mot de passe de la BDD est le même que celui rentré
             if ($_REQUEST["NouveauPassword"] == $_REQUEST["ConfirmPassword"]) {
                 if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) >= 90) {
                     Modele_Entreprise::Entreprise_Modifier_motDePasse($_SESSION["idEntreprise"], $_REQUEST["NouveauPassword"]);
+                    \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($utilisateur_entreprise["idUtilisateur"],0);
+                    \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($utilisateur_entreprise["idUtilisateur"],"");
                     $Vue->addToCorps(new Vue_Entreprise_Gerer_Compte("<label><b>Votre mot de passe a bien été modifié</b></label>"));
                     // Dans ce cas les mots de passe sont bons, il est donc modifié
                 } else {

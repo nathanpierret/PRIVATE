@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a594cdc6-8291-43c9-9816-48b0a1615697" name="Changes" comment="Ajout Controleur Accepter RGPD et Vue Accepter RGPD">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_10_2023_14_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_10_2023_14_11__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_Entreprise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_MonCompte_Salarie.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_MonCompte_Salarie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_monCompte.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_monCompte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_visiteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_visiteur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php.php" beforeDir="false" afterPath="$PROJECT_DIR$/php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fonctions/fonctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fonctions/fonctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modele/Modele_Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Modele_Entreprise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Application---Complexite" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,7 +100,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Application---Complexite&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Application---ReinitialisationMail&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/pierretn/Documents/Projets/PHP/php-bibliotheque&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -120,6 +126,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.FonctionsTest" />
         <item itemvalue="PHPUnit.FonctionsTest" />
       </list>
     </recent_temporary>
@@ -161,6 +168,9 @@
       <workItem from="1697544202884" duration="594000" />
       <workItem from="1697630328026" duration="386000" />
       <workItem from="1697630734508" duration="4911000" />
+      <workItem from="1699880636694" duration="5634000" />
+      <workItem from="1700053075858" duration="6331000" />
+      <workItem from="1700657900182" duration="6354000" />
     </task>
     <servers />
   </component>

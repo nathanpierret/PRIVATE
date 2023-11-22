@@ -152,6 +152,35 @@ WHERE idUtilisateur = :paramidUtilisateur');
         return $reponse;
     }
 
+    static function Utilisateur_Modifier_ObligationModifMDP($idUtilisateur,$modif)
+
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+SET `modifMDP`= :paramMDP
+WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramMDP', $modif);
+        $requetePreparee->bindParam('paramidUtilisateur', $idUtilisateur);
+        $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
+        return $reponse;
+    }
+
+    static function Utilisateur_Modifier_MDPTemp($idUtilisateur,$mdp)
+
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+SET `MDPTemp`= :paramMDP
+WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramMDP', $mdp);
+        $requetePreparee->bindParam('paramidUtilisateur', $idUtilisateur);
+        $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
+        return $reponse;
+    }
 
     /**
      * @param $connexionPDO

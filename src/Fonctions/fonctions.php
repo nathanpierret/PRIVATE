@@ -6,9 +6,13 @@ namespace App\Fonctions;
         exit;
     }
 
-function GenereMDP($nbChar) :string{
-
-    return "secret";
+function GenereMDP($nbChar) :string {
+    $chaine = "ABCDEFGHIJKLMONOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&\"'(-_)=*!:;,{[|\]}";
+    $pass = '';
+    for ($i = 0; $i < $nbChar; $i++) {
+        $pass .= $chaine[random_int(0,99999999) % strlen($chaine)];
+    }
+    return $pass;
 }
 
 function CalculComplexiteMdp($mdp) :int{
@@ -40,4 +44,15 @@ function CalculComplexiteMdp($mdp) :int{
     }
     $complexite = log($nbCaracteresPossibles**$longueurMDP)/log(2)+1;
     return $complexite;
+}
+
+function envoiMailOubliMDP($to,$mdp):void {
+    $subject = "Demande de réinitialisation de mot de passe.";
+    $message = "Vous venez de nous demander de réinitialiser votre mot de passe suite à un oubli de votre petite tête d'imbécile.
+Voici un mot de passe temporaire, donc essayez de le retenir dans votre grain de riz qui vous sert de cerveau jusqu'à pouvoir le modifier :
+".$mdp;
+    $headers = ["From" => "cafe@cafe.fr",
+        "Content-Type" => "text/html; charset=utf-8"
+        ];
+    mail($to,$subject,$message,$headers);
 }

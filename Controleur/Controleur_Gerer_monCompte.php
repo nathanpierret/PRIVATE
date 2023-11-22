@@ -28,6 +28,8 @@ switch ($action) {
                     $Vue->setEntete(new Vue_Structure_Entete());
                     $Vue->setMenu(new Vue_Menu_Administration());
                     Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_SESSION["idUtilisateur"], $_REQUEST["NouveauPassword"]);
+                    Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($utilisateur["idUtilisateur"],0);
+                    \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($utilisateur["idUtilisateur"],"");
                     $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<label><b>Votre mot de passe a bien été modifié</b></label>"));
                     // Dans ce cas les mots de passe sont bons, il est donc modifier
                 } else {
