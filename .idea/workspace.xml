@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a594cdc6-8291-43c9-9816-48b0a1615697" name="Changes" comment="Ajout Controleur Accepter RGPD et Vue Accepter RGPD">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_10_2023_14_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_10_2023_14_11__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_Entreprise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_MonCompte_Salarie.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_MonCompte_Salarie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_monCompte.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_monCompte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_Gerer_utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_Gerer_utilisateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur/Controleur_visiteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Controleur_visiteur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php.php" beforeDir="false" afterPath="$PROJECT_DIR$/php.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fonctions/fonctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fonctions/fonctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modele/Modele_Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Modele_Entreprise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" afterDir="false" />
-    </list>
+    <list default="true" id="a594cdc6-8291-43c9-9816-48b0a1615697" name="Changes" comment="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,8 +158,17 @@
       <workItem from="1697630734508" duration="4911000" />
       <workItem from="1699880636694" duration="5634000" />
       <workItem from="1700053075858" duration="6331000" />
-      <workItem from="1700657900182" duration="6354000" />
+      <workItem from="1700657900182" duration="6639000" />
     </task>
+    <task id="LOCAL-00001" summary="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root">
+      <option name="closed" value="true" />
+      <created>1700664558961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700664558961</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +177,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Modification du Diagramme des UseCases et des vues de menu en fonction de la connexion" />
     <MESSAGE value="Ajout Controleur Accepter RGPD et Vue Accepter RGPD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout Controleur Accepter RGPD et Vue Accepter RGPD" />
+    <MESSAGE value="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

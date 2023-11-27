@@ -85,11 +85,13 @@ switch ($action) {
                         switch ($utilisateur["idCategorie_utilisateur"]) {
                             case 1:
                                 $_SESSION["typeConnexionBack"] = "administrateurLogiciel"; //Champ inutile, mais bien pour voir ce qu'il se passe avec des étudiants !
-                                $Vue->setMenu(new Vue_Menu_Administration());
+                                $typeConnexion = "administrateurLogiciel";
+                                $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
                                 break;
                             case 2:
                                 $_SESSION["typeConnexionBack"] = "utilisateurCafe";
-                                $Vue->setMenu(new Vue_Menu_Administration());
+                                $typeConnexion = "utilisateurCafe";
+                                $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
                                 break;
                             case 3:
                                 $_SESSION["typeConnexionBack"] = "entrepriseCliente";
