@@ -15,8 +15,11 @@ switch ($action) {
         //Il a cliqué sur changer Mot de passe. Cas pas fini
         $Vue->setEntete(new Vue_Structure_Entete());
         $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
-        $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("", "Gerer_monCompte"));
+        $Vue->addToCorps(new \App\Vue\Vue_Utilisateur_Changement_MDP("", "Gerer_monCompte"));
         break;
+    case "nouveauMDP":
+        $Vue->setEntete(new Vue_Structure_Entete());
+        $Vue->addToCorps(new \App\Vue\Vue_Utilisateur_Nouveau_MDP("","Gerer_monCompte"));
     case "submitModifMDP":
         //il faut récuperer le mdp en BDD et vérifier qu'ils sont identiques
         $utilisateur = Modele_Utilisateur::Utilisateur_Select_ParId($_SESSION["idUtilisateur"]);
@@ -61,6 +64,43 @@ switch ($action) {
             $Vue->setEntete(new Vue_Structure_Entete());
             $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
             $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Vous n'avez pas saisi le bon mot de passe</b></label>", "Gerer_monCompte"));
+        }
+        break;
+    case "submitNouvMDP":
+        $utilisateur = Modele_Utilisateur::Utilisateur_Select_ParId($_SESSION["idUtilisateur"]);
+        if ($_REQUEST["NouveauPassword"] == $_REQUEST["ConfirmPassword"]) {
+            if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) >= 90) {
+                $Vue->setEntete(new Vue_Structure_Entete());
+                $Vue->setMenu(new Vue_Menu_Administration());
+                Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_SESSION["idUtilisateur"], $_REQUEST["NouveauPassword"]);
+                Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($utilisateur["idUtilisateur"],0);
+                \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($utilisateur["idUtilisateur"],"");
+                $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<label><b>Votre mot de passe a bien été modifié</b></label>"));
+                // Dans ce cas les mots de passe sont bons, il est donc modifier
+            } else {
+                if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 64 ) {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $Vue->setMenu(new Vue_Menu_Administration());
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est très faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } elseif (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 80) {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $Vue->setMenu(new Vue_Menu_Administration());
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } else {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $Vue->setMenu(new Vue_Menu_Administration());
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est de force moyenne. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                }
+            }
+            $Vue->setEntete(new Vue_Structure_Entete());
+            $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
+            Modele_Utilisateur::Utilisateur_Modifier_motDePasse($_SESSION["idUtilisateur"], $_REQUEST["NouveauPassword"]);
+            $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<label><b>Votre mot de passe a bien été modifié</b></label>"));
+            // Dans ce cas les mots de passe sont bons, il est donc modifier
+        } else {
+            $Vue->setEntete(new Vue_Structure_Entete());
+            $Vue->setMenu(new Vue_Menu_Administration($typeConnexion));
+            $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Les nouveaux mots de passe ne sont pas identiques</b></label>", "Gerer_monCompte"));
         }
         break;
     case  "SeDeconnecter":

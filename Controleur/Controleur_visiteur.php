@@ -54,22 +54,21 @@ switch ($action) {
                                     break;
                                 case 2:
                                     $_SESSION["typeConnexionBack"] = "utilisateurCafe";
-                                    $Vue->setMenu(new Vue_Menu_Administration());
-                                    $action = "changerMDP";
+                                    $action = "nouveauMDP";
                                     include "./Controleur/Controleur_Gerer_monCompte.php";
                                     break;
                                 case 3:
                                     $_SESSION["typeConnexionBack"] = "entrepriseCliente";
                                     //error_log("idUtilisateur : " . $_SESSION["idUtilisateur"]);
                                     $_SESSION["idEntreprise"] = Modele_Entreprise::Entreprise_Select_Par_IdUtilisateur($_SESSION["idUtilisateur"])["idEntreprise"];
-                                    $action = "ChangerMDPEntreprise";
+                                    $action = "nouveauMDPEntreprise";
                                     include "./Controleur/Controleur_Gerer_Entreprise.php";
                                     break;
                                 case 4:
                                     $_SESSION["typeConnexionBack"] = "salarieEntrepriseCliente";
                                     $_SESSION["idSalarie"] = $utilisateur["idUtilisateur"];
                                     $_SESSION["idEntreprise"] = Modele_Salarie::Salarie_Select_byId($_SESSION["idUtilisateur"])["idEntreprise"];
-                                    $action = "changerMDP";
+                                    $action = "nouveauMDP";
                                     include "./Controleur/Controleur_Gerer_MonCompte_Salarie.php";
                                     break;
                             }

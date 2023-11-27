@@ -116,11 +116,44 @@ switch ($action) {
 
         }
         break;
+    case "submitNouvMDP":
+        $Vue->setEntete(new Vue_Structure_Entete());
+        $Vue->setMenu(new Vue_Menu_Entreprise_Client());
+        //il faut récuperer le mdp en BDD et vérifier qu'ils sont identiques
+        $entreprise_connectee = Modele_Entreprise::Entreprise_Select_ParId($_SESSION["idEntreprise"]);
+        $utilisateur_entreprise = \App\Modele\Modele_Utilisateur::Utilisateur_Select_ParId($entreprise_connectee["idUtilisateur"]);
+        if ($_REQUEST["NouveauPassword"] == $_REQUEST["ConfirmPassword"]) {
+            if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) >= 90) {
+                Modele_Entreprise::Entreprise_Modifier_motDePasse($_SESSION["idEntreprise"], $_REQUEST["NouveauPassword"]);
+                \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($utilisateur_entreprise["idUtilisateur"],0);
+                \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($utilisateur_entreprise["idUtilisateur"],"");
+                $Vue->addToCorps(new Vue_Entreprise_Gerer_Compte("<label><b>Votre mot de passe a bien été modifié</b></label>"));
+                // Dans ce cas les mots de passe sont bons, il est donc modifié
+            } else {
+                if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 64 ) {
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est très faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } elseif (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 80) {
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } else {
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est de force moyenne. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                }
+            }
+
+
+        } else {
+            $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Les nouveaux mots de passe ne sont pas identiques</b></label>"));
+
+        }
+        break;
     case "ChangerMDPEntreprise":
         $Vue->setEntete(new Vue_Structure_Entete());
         $Vue->setMenu(new Vue_Menu_Entreprise_Client());
         $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP());
         $Vue->setBasDePage(new Vue_Structure_BasDePage());
+        break;
+    case "nouveauMDPEntreprise":
+        $Vue->setEntete(new Vue_Structure_Entete());
+        $Vue->addToCorps(new \App\Vue\Vue_Utilisateur_Nouveau_MDP());
         break;
     case "deconnexionEntreprise":
         session_destroy();

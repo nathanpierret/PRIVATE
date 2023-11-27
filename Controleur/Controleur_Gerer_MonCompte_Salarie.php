@@ -18,6 +18,11 @@ switch ($action) {
         $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
         $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("", "Gerer_MonCompte_Salarie"));
         break;
+    case "nouveauMDP":
+        $Vue->setEntete(new Vue_Structure_Entete());
+        $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+        $Vue->addToCorps(new \App\Vue\Vue_Utilisateur_Nouveau_MDP("","Gerer_MonCompte_Salarie"));
+        break;
     case "submitModifMDP":
         //il faut récuperer le mdp en BDD et vérifier qu'ils sont identiques
         $salarie = Modele_Salarie::Salarie_Select_byId($_SESSION["idSalarie"]);
@@ -67,6 +72,47 @@ switch ($action) {
             $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
 
             $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Vous n'avez pas saisi le bon mot de passe</b></label>", "Gerer_MonCompte_Salarie"));
+        }
+        break;
+    case "submitNouvMDP":
+        $salarie = Modele_Salarie::Salarie_Select_byId($_SESSION["idSalarie"]);
+        $utilisateur_salarie = \App\Modele\Modele_Utilisateur::Utilisateur_Select_ParLogin($salarie["mail"]);
+        if ($_REQUEST["NouveauPassword"] == $_REQUEST["ConfirmPassword"]) {
+            if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) >= 90) {
+                $Vue->setEntete(new Vue_Structure_Entete());
+                $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+                $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
+                Modele_Salarie::Salarie_Modifier_motDePasse($_SESSION["idSalarie"], $_REQUEST["NouveauPassword"]);
+                \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_ObligationModifMDP($utilisateur_salarie["idUtilisateur"],0);
+                \App\Modele\Modele_Utilisateur::Utilisateur_Modifier_MDPTemp($utilisateur_salarie["idUtilisateur"],"");
+                $Vue->addToCorps(new Vue_Compte_Administration_Gerer("<br><label><b>Votre mot de passe a bien été modifié</b></label>", "Gerer_MonCompte_Salarie"));
+                // Dans ce cas les mots de passe sont bons, il est donc modifier
+            } else {
+                if (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 64 ) {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+                    $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est très faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } elseif (\App\Fonctions\CalculComplexiteMdp($_REQUEST["NouveauPassword"]) < 80) {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+                    $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est faible. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                } else {
+                    $Vue->setEntete(new Vue_Structure_Entete());
+                    $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+                    $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
+                    $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<label><b>Le nouveau mot de passe est de force moyenne. Essayez un mot de passe plus fort.</b></label>", "Gerer_monCompte"));
+                }
+            }
+
+
+        } else {
+            $Vue->setEntete(new Vue_Structure_Entete());
+            $quantiteMenu = Modele_Commande::Panier_Quantite($_SESSION["idEntreprise"]);
+            $Vue->setMenu(new Vue_Menu_Entreprise_Salarie($quantiteMenu));
+
+            $Vue->addToCorps(new Vue_Utilisateur_Changement_MDP("<br><label><b>Les nouveaux mots de passe ne sont pas identiques</b></label>", "Gerer_MonCompte_Salarie"));
         }
         break;
     case "SeDeconnecter":
