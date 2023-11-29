@@ -56,3 +56,9 @@ Voici un mot de passe temporaire, donc essayez de le retenir dans votre grain de
         ];
     mail($to,$subject,$message,$headers);
 }
+
+function GenererValeurToken():string {
+    $octetsAleatoires = openssl_random_pseudo_bytes (256) ;
+    $jeton = sodium_bin2base64($octetsAleatoires, SODIUM_BASE64_VARIANT_ORIGINAL);
+    return $jeton;
+}

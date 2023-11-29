@@ -220,5 +220,4 @@ SET motDePasse = :parammotDePasse ');
         $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
         return $reponse;
     }
-
 }

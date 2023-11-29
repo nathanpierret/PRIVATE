@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a594cdc6-8291-43c9-9816-48b0a1615697" name="Changes" comment="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root" />
+    <list default="true" id="a594cdc6-8291-43c9-9816-48b0a1615697" name="Changes" comment="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root">
+      <change beforePath="$PROJECT_DIR$/.idea/PRIVATE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PRIVATE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fonctions/fonctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fonctions/fonctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modele/Modele_Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unitaires/FonctionsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unitaires/FonctionsTest.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +82,9 @@
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -83,30 +93,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Application---ReinitialisationMail&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pierretn/Documents/Projets/PHP/php-bibliotheque&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary": "PHPUnit",
+    "git-widget-placeholder": "Application---TokenMail",
+    "last_opened_file_path": "C:/Users/pierretn/Documents/Projets/PHP/php-bibliotheque",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
     ],
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="FonctionsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\unitaires\FonctionsTest" file="$PROJECT_DIR$/tests/unitaires/FonctionsTest.php" scope="Class" />
@@ -159,6 +170,7 @@
       <workItem from="1699880636694" duration="5634000" />
       <workItem from="1700053075858" duration="6331000" />
       <workItem from="1700657900182" duration="6639000" />
+      <workItem from="1701263006643" duration="5424000" />
     </task>
     <task id="LOCAL-00001" summary="Modification de la réinitialisation de MDP sur la page de login et de la réinitialisation de MDP d'un utilisateur par le root">
       <option name="closed" value="true" />
