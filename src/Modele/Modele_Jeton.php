@@ -21,7 +21,6 @@ class Modele_Jeton
     }
 
     /**
-     * @param $connexionPDO
      * @param $idJeton
      * @return mixed
      */
@@ -30,6 +29,20 @@ class Modele_Jeton
         $connexionPDO = Singleton_ConnexionPDO::getInstance();
         $requetePreparee = $connexionPDO->prepare('select * from `token` where id = :paramId');
         $requetePreparee->bindParam('paramId', $idJeton);
+        $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
+        $jeton = $requetePreparee->fetch(PDO::FETCH_ASSOC);
+        return $jeton;
+    }
+
+    /**
+     * @param $token
+     * @return mixed
+     */
+    static function Jeton_Select_ParToken($token)
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+        $requetePreparee = $connexionPDO->prepare('select * from `token` where valeur = :paramToken');
+        $requetePreparee->bindParam('paramToken',$token);
         $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
         $jeton = $requetePreparee->fetch(PDO::FETCH_ASSOC);
         return $jeton;
@@ -52,7 +65,7 @@ class Modele_Jeton
         $requetePreparee->bindParam('idUtilisateur',$idUtilisateur);
         $requetePreparee->bindParam('dateFin',$dateFin);
         $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
-        return false;
+        return $reponse;
     }
 
     /**
@@ -71,7 +84,7 @@ class Modele_Jeton
     static function Jeton_Modifier($idJeton,$valeurJeton,$codeAction,$idUtilisateur)
     {
         $connexionPDO = Singleton_ConnexionPDO::getInstance();
-        $requetePreparee = $connexionPDO->prepare('UPDATE `token` SET `valeurJeton`= :paramValeur, `codeAction`= :paramAction, `idUtilisateur`= :paramUtilisateur
+        $requetePreparee = $connexionPDO->prepare('UPDATE `token` SET `valeur`= :paramValeur, `codeAction`= :paramAction, `idUtilisateur`= :paramUtilisateur
                                                           WHERE `id`= :paramId');
         $requetePreparee->bindParam('paramValeur',$valeurJeton);
         $requetePreparee->bindParam('paramAction',$codeAction);
