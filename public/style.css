@@ -87,6 +87,11 @@ button:hover > a
 {
     color: #53af57;
 }
+
+input[type=checkbox]
+{
+    font-size: 8px;
+}
 /*----------------------------
 	CSS3 Animated Navigation
 -----------------------------*/

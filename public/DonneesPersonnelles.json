@@ -1,3 +1,11 @@
+
+Données Utilisateur : 
 idUtilisateur : 19
+login : utilisateurcafe
+motDePasse : secret
 idCategorie_utilisateur : 2
-typeConnexionBack : utilisateurCafe
+desactiver : 0
+aAccepteRGPD : 1
+dateAcceptationRGPD : 2023-12-20
+doitChangerMDP : 0
+droitOpposition : 1

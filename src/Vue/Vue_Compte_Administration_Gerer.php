@@ -16,6 +16,7 @@ class Vue_Compte_Administration_Gerer extends Vue_Composant
 
     function donneTexte(): string
     {
+
         $fichier = fopen("./public/DonneesPersonnelles.json","w");
         foreach ($_SESSION as $key => $item) {
             fwrite($fichier,$key." : ".$item.PHP_EOL);
@@ -36,7 +37,12 @@ class Vue_Compte_Administration_Gerer extends Vue_Composant
         </tr>
         <tr>
             <td>
-                <a href='./public/DonneesPersonnelles.json' download><button type='submit'>Droit à l'accès</button></a>
+                <form style='display: contents'>
+                    
+                     <input type='hidden' name='case' value='$this->action'>
+                     
+                    <button type='submit' name='action' value='droitAcces'>Droit à l'accès </button>
+                </form>
             </td>
         </tr>
         <tr>
