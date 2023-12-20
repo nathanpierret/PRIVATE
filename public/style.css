@@ -77,7 +77,16 @@ input[type=submit]:hover , button[type=submit]:hover{
     border: 1px solid #53af57;
 }
 
+a
+{
+    color: white;
+    text-decoration: none;
+}
 
+button:hover > a
+{
+    color: #53af57;
+}
 /*----------------------------
 	CSS3 Animated Navigation
 -----------------------------*/

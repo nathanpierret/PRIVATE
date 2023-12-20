@@ -14,7 +14,6 @@ use App\Vue\Vue_Structure_Entete;
 
 
 $Vue = new Vue();
-
 //Charge le gestionnaire de vue
 
 

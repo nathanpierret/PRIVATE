@@ -16,6 +16,7 @@ class Vue_Compte_Administration_Gerer extends Vue_Composant
 
     function donneTexte(): string
     {
+        file_put_contents("./public/DonneesPersonnelles.json",$_SESSION);
         return " 
     <H1>Gérer mon compte</H1>
     <table style='display: inline-block'>
@@ -27,6 +28,11 @@ class Vue_Compte_Administration_Gerer extends Vue_Composant
                      
                     <button type='submit' name='action' value='changerMDP'>Changer mot de passe </button>
                 </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type='submit'><a href='./public/DonneesPersonnelles.json' download>Droit à l'accès</a></button>
             </td>
         </tr>
         <tr>
