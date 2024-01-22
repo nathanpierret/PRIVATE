@@ -27,7 +27,7 @@ class Vue_Produit_Creation extends Vue_Composant
             if ($this->produit) {
                 $str .= "Le produit a été créé</h3>";
             }
-            $str .= "<a href='?case=Gerer_catalogue'>Retourner sur le catalogue</a>
+            $str .= "<a href='?case=Gerer_catalogue".genereVarHrefCSRF()."'>Retourner sur le catalogue</a>
         </table>
         ";
         } else {
