@@ -1,7 +1,7 @@
 <?php
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
-
+require_once "src\Fonctions\CSRF.php";
 class Vue_Produit_Creation extends Vue_Composant
 {
     private bool $reponse;

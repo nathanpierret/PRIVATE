@@ -5,7 +5,7 @@
  */
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
-
+require_once "src\Fonctions\CSRF.php";
 class Vue_Structure_BasDePage extends Vue_Composant
 {
     public function __construct()

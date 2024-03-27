@@ -1,7 +1,7 @@
 <?php
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
-
+require_once "src\Fonctions\CSRF.php";
 class Vue_Categorie_Creation_Modification_  extends Vue_Composant
 {
     private bool $modeCreation=true;

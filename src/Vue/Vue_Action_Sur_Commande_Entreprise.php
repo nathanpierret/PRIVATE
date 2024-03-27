@@ -1,7 +1,7 @@
 <?php
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
-
+require_once "src\Fonctions\CSRF.php";
 class Vue_Action_Sur_Commande_Entreprise extends Vue_Composant
 {
     private array $infoCommande;

@@ -1,7 +1,7 @@
 <?php
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
-
+require_once "src\Fonctions\CSRF.php";
 class Vue_Menu_Entreprise_Salarie  extends Vue_Composant
 {
     private int $quantiteMenu=0;

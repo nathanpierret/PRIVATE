@@ -1,6 +1,7 @@
 <?php
 namespace App\Vue;
 use App\Utilitaire\Vue_Composant;
+require_once "src\Fonctions\CSRF.php";
 class Vue_Salarie_Liste extends Vue_Composant
 {
 private array $listeSalarie;

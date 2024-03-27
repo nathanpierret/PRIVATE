@@ -8,7 +8,15 @@ use App\Vue\Vue_AfficherMessage;
 use App\Vue\Vue_Connexion_Formulaire_client;
 use App\Vue\Vue_Menu_Administration;
 use App\Vue\Vue_Structure_Entete;
+use Monolog\Handler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
+$logger = new Logger('cafe');
+$logger->pushHandler(new StreamHandler(__DIR__.'/app.log', Logger::DEBUG));
+
+// Puis pour faire une nouvelle entrée au niveau d'index.php !
+$logger->info('Action demandée',[$_SERVER['REMOTE_ADDR'] ] );
 
 //Page appelée pour les utilisateurs publics
 
